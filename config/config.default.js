@@ -52,6 +52,12 @@ module.exports = appInfo => {
       timestamps: true, // 自动写入时间戳 created_at updated_at
       paranoid: true, // 字段生成软删除时间戳 deleted_at
       underscored: true, // 所有驼峰命名格式化
+      freezeTableName: true, // 取消数据表名复数
+    },
+    pool: {
+      max: 10, // 连接池最大连接数量
+      min: 0, // 连接池最小连接数量
+      idle: 10000, // 每个线程最长等待时间
     },
   };
 

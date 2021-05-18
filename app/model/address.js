@@ -3,7 +3,7 @@
 module.exports = app => {
   const { INTEGER, STRING } = app.Sequelize;
 
-  const Addres = app.model.define('adderss', {
+  const Address = app.model.define('address', {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
     uid: { type: STRING, comment: '用户id' },
     name: { type: STRING, comment: '姓名' },
@@ -13,10 +13,10 @@ module.exports = app => {
     area: { type: STRING, comment: '区' },
     street: { type: STRING, comment: '街道' },
     code: { type: STRING, comment: '邮编' },
-    is_default: { type: INTEGER, comment: '是否默认' },
+    isDefault: { type: INTEGER, comment: '是否默认' },
   });
 
-  Addres.associate = () => {};
+  Address.associate = () => {};
 
-  return Addres;
+  return Address;
 };
