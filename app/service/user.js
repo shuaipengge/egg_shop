@@ -15,5 +15,39 @@ class UserService extends Service {
     }
     return result;
   }
+
+  async updateUserInfo(data) {
+    const { ctx } = this;
+    const { openid } = ctx.state.user;
+    const {
+      avatar,
+      nickName,
+      tel,
+      country,
+      province,
+      city,
+      birthday,
+      pid,
+      latitude,
+      longitude,
+    } = data;
+    const result = await ctx.model.User.update(
+      {
+        avatar,
+        nickName,
+        tel,
+        country,
+        province,
+        city,
+        birthday,
+        pid,
+        latitude,
+        longitude,
+      },
+      { where: { openid } }
+    );
+    if (result[0] > 0) return true;
+    return false;
+  }
 }
 module.exports = UserService;

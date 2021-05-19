@@ -20,7 +20,11 @@ class UserController extends Controller {
    * @apiSuccess {String} token 用户token
    * @apiSuccessExample  {json} success-example
    * {
-   *   "token": "test"
+   *    "code" : 200,
+   *    "msg": "获取成功"
+   *    "data": {
+   *       "token": "*****"
+   *    }
    * }
    */
   async getToken() {
@@ -50,6 +54,68 @@ class UserController extends Controller {
     } = ctx.app.config;
     const token = ctx.app.jwt.sign(data, secret, { expiresIn });
     ctx.body = { code: 200, msg: 'token获取成功', data: { token } };
+  }
+
+  /**
+   * @api {put} /api/v1/user 更新用户信息
+   * @apiGroup User
+   * @apiName updateUserInfo
+   * @apiDescription 更新用户信息 需携带token
+   *
+   * @apiSampleRequest /api/v1/user
+   * @apiHeader {String} Authorization token.
+   * @apiParam {String} avatar 微信头像url
+   * @apiParam {String} nickName 微信昵称
+   * @apiParam {String} tel 手机号码
+   * @apiParam {String} country 国家
+   * @apiParam {String} province 省
+   * @apiParam {String} city 市
+   * @apiParam {Date} birthday 生日
+   * @apiParam {String} pid 推荐人OpenID
+   * @apiParam {Float} latitude 维度
+   * @apiParam {Float} longitude 经度
+   * @apiParamExample {json} request-example
+   * {
+   *    "avatar": "http://...",
+   *    "nickName": "微信用户",
+   *    "tel": "13*********",
+   *    "country": "中国",
+   *    "province": "浙江",
+   *    "city": "杭州",
+   *    "birthday": "2021-01-01",
+   *    "pid": "orDFKwH9tWT3GUexuxsPmfIUoKpw",
+   *    "latitude": 1.000,
+   *    "longitude": 1.000
+   * }
+   *
+   * @apiUse DefineSuccess
+   * @apiSuccess {String} msg 消息
+   * @apiSuccessExample  {json} success-example
+   * {
+   *   "code": 200
+   *   "message": "更新成功"
+   * }
+   */
+  async updateUserInfo() {
+    const { ctx } = this;
+    this.ctx.validate({
+      avatar: { type: 'string', required: false },
+      nickName: { type: 'string', required: false },
+      tel: { type: 'string', required: false },
+      country: { type: 'string', required: false },
+      province: { type: 'string', required: false },
+      city: { type: 'string', required: false },
+      birthday: { type: 'date', required: false },
+      pid: { type: 'string', required: false },
+      latitude: { type: 'number', required: false },
+      longitude: { type: 'number', required: false },
+    });
+    const result = await ctx.service.user.updateUserInfo(ctx.request.body);
+    if (!result) {
+      ctx.body = { code: -1, msg: '更新失败，稍后重试' };
+      return;
+    }
+    ctx.body = { code: 200, msg: '更新成功' };
   }
 }
 

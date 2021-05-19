@@ -21,7 +21,7 @@ module.exports = app => {
     sessionKey: { type: STRING, comment: '会话密钥' },
     birthday: { type: DATE, comment: '生日' },
     state: { type: INTEGER, comment: '会员状态' },
-    pid: { type: INTEGER, comment: '推荐人' },
+    pid: { type: STRING, comment: '推荐人' },
     lever: { type: INTEGER, comment: '会员等级' },
     integral: { type: INTEGER, comment: '会员积分' },
     latitude: { type: FLOAT, comment: '维度' },
