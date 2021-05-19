@@ -88,6 +88,12 @@ module.exports = appInfo => {
     },
   };
 
+  // weixin
+  config.weixin = {
+    appid: 'wxa392a80b98ee041b',
+    wx_secret: '0268a3f361773c56cb353c5a337460e3',
+  };
+
   // alinode
   config.alinode = {
     appid: '88288',
