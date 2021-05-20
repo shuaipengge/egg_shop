@@ -13,7 +13,7 @@ class CartController extends Controller {
    * @apiHeader {String} Authorization token.
    * @apiUse getList
    *
-   * @apiUse DefineSuccess
+   * @apiUse DefineError
    * @apiSuccess {Number} goodsId 商品ID
    * @apiSuccess {String} img 商品图片
    * @apiSuccess {String} name 商品名称
@@ -53,7 +53,7 @@ class CartController extends Controller {
    *    "goodsNum": 3
    * }
    *
-   * @apiUse DefineSuccess
+   * @apiUse DefineError
    * @apiSuccessExample  {json} success-example
    * {
    *    "code" : 200,
@@ -70,6 +70,40 @@ class CartController extends Controller {
       return;
     }
     ctx.body = { code: -1, msg: '添加失败' };
+  }
+
+  /**
+   * @api {delete} /api/v1/cart 删除购物车商品
+   * @apiGroup Cart
+   * @apiName CartDelGoods
+   * @apiDescription 购物车删除商品
+   *
+   * @apiSampleRequest /api/v1/cart
+   * @apiHeader {String} Authorization token.
+   *
+   * @apiParam {Number} goodsId 商品ID
+   * @apiParamExample {json} 请求参数格式:
+   * {
+   *    "goodsId": 1
+   * }
+   *
+   * @apiUse DefineError
+   * @apiSuccessExample  {json} success-example
+   * {
+   *    "code" : 200,
+   *    "msg": "删除成功"
+   * }
+   */
+  async cartDelGoods() {
+    // TODO 检查此商品是否存在
+    const { ctx } = this;
+    const { goodsId } = ctx.request.body;
+    const result = await ctx.service.user.cart.cartDelGoods(goodsId);
+    if (result) {
+      ctx.body = { code: 200, msg: '删除成功' };
+      return;
+    }
+    ctx.body = { code: -1, msg: '删除失败' };
   }
 }
 

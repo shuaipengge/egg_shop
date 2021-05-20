@@ -28,6 +28,12 @@ module.exports = {
         brand: { type: STRING, comment: '商品品牌' },
         detail: { type: TEXT, comment: '商品详情' },
         freight: { type: DECIMAL, comment: '商品运费' },
+        status: {
+          type: INTEGER,
+          allowNull: false,
+          defaultValue: 1,
+          comment: '（1 正常，0 禁用，-1删除 ）',
+        },
         created_at: DATE,
         updated_at: DATE,
         deleted_at: DATE,

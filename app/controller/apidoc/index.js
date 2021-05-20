@@ -1,5 +1,5 @@
 /**
- * @apiDefine DefineSuccess
+ * @apiDefine DefineError
  * @apiError {String} msg 错误信息
  * @apiError {Number} code 状态码
  * @apiErrorExample  {json} error-example

@@ -32,7 +32,23 @@ class CartService extends Service {
       const result = await cart.update({ goodsNum });
       return result;
     }
-    const result = await ctx.model.Carts.create({ uid: openid, goodsId, goodsNum });
+    const result = await ctx.model.Carts.create({
+      uid: openid,
+      goodsId,
+      goodsNum,
+    });
+    return result;
+  }
+
+  async cartDelGoods(goodsId) {
+    const { ctx } = this;
+    const { openid } = ctx.state.user;
+    const result = await ctx.model.Carts.destroy({
+      where: {
+        uid: openid,
+        goodsId,
+      },
+    });
     return result;
   }
 }

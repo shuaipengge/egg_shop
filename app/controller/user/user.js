@@ -16,7 +16,7 @@ class UserController extends Controller {
    *   "code": "010101010",
    * }
    *
-   * @apiUse DefineSuccess
+   * @apiUse DefineError
    * @apiSuccess {String} token 用户token
    * @apiSuccessExample  {json} success-example
    * {
@@ -88,7 +88,7 @@ class UserController extends Controller {
    *    "longitude": 1.000
    * }
    *
-   * @apiUse DefineSuccess
+   * @apiUse DefineError
    * @apiSuccess {String} msg 消息
    * @apiSuccessExample  {json} success-example
    * {
