@@ -13,7 +13,7 @@ module.exports = {
         },
         uid: { type: STRING, comment: '用户ID' },
         goods_id: { type: INTEGER, comment: '商品ID' },
-        goods_sum: { type: INTEGER, comment: '商品数量' },
+        goods_num: { type: INTEGER, comment: '商品数量' },
         status: {
           type: INTEGER,
           allowNull: false,

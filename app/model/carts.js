@@ -10,8 +10,8 @@ module.exports = app => {
       autoIncrement: true,
     },
     uid: { type: STRING, comment: '用户ID' },
-    goods_id: { type: INTEGER, comment: '商品ID' },
-    goods_sum: { type: INTEGER, comment: '商品数量' },
+    goodsId: { type: INTEGER, comment: '商品ID' },
+    goodsNum: { type: INTEGER, comment: '商品数量' },
     status: {
       type: INTEGER,
       allowNull: false,
@@ -20,7 +20,12 @@ module.exports = app => {
     },
   });
 
-  Cart.associate = () => {};
+  Cart.associate = () => {
+    Cart.belongsTo(app.model.Goods, {
+      foreignKey: 'goodsId',
+      targetKey: 'id',
+    });
+  };
 
   return Cart;
 };

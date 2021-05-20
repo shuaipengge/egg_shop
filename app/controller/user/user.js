@@ -43,7 +43,7 @@ class UserController extends Controller {
       return;
     }
 
-    const result = await ctx.service.user.saveSessiionKey(data);
+    const result = await ctx.service.user.user.saveSessiionKey(data);
     if (!result) {
       ctx.body = { code: -1, msg: '注册失败，稍后重试' };
       return;
@@ -98,19 +98,26 @@ class UserController extends Controller {
    */
   async updateUserInfo() {
     const { ctx } = this;
-    this.ctx.validate({
-      avatar: { type: 'string', required: false },
-      nickName: { type: 'string', required: false },
-      tel: { type: 'string', required: false },
-      country: { type: 'string', required: false },
-      province: { type: 'string', required: false },
-      city: { type: 'string', required: false },
-      birthday: { type: 'date', required: false },
-      pid: { type: 'string', required: false },
-      latitude: { type: 'number', required: false },
-      longitude: { type: 'number', required: false },
-    });
-    const result = await ctx.service.user.updateUserInfo(ctx.request.body);
+    try {
+      ctx.validate({
+        avatar: { type: 'string', required: false },
+        nickName: { type: 'string', required: false },
+        tel: { type: 'string', required: false },
+        country: { type: 'string', required: false },
+        province: { type: 'string', required: false },
+        city: { type: 'string', required: false },
+        birthday: { type: 'date', required: false },
+        pid: { type: 'string', required: false },
+        latitude: { type: 'number', required: false },
+        longitude: { type: 'number', required: false },
+      });
+    } catch (err) {
+      ctx.logger.warn(err.errors);
+      ctx.status = 422;
+      ctx.body = { code: -1, msg: '参数错误' };
+      return;
+    }
+    const result = await ctx.service.user.user.updateUserInfo(ctx.request.body);
     if (!result) {
       ctx.body = { code: -1, msg: '更新失败，稍后重试' };
       return;
