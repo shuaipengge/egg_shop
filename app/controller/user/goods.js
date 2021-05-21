@@ -26,6 +26,7 @@ class GoodsController extends Controller {
    * @apiSuccess {String} slider 商品轮播图
    * @apiSuccess {String} detail 商品详情
    * @apiSuccess {Number} inventory 商品库存
+   * @apiSuccess {Number} status 商品状态
    *
    * @apiSuccessExample  {json} success-example
    * {
@@ -62,6 +63,7 @@ class GoodsController extends Controller {
    * @apiSuccess {String} slider 商品轮播图
    * @apiSuccess {String} detail 商品详情
    * @apiSuccess {Number} inventory 商品库存
+   * @apiSuccess {Number} status 商品状态
    *
    * @apiSuccessExample  {json} success-example
    * {

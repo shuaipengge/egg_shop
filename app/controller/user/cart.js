@@ -19,6 +19,7 @@ class CartController extends Controller {
    * @apiSuccess {String} name 商品名称
    * @apiSuccess {Number} price 商品价格
    * @apiSuccess {Number} goodsSum 商品件数
+   * @apiSuccess {Number} status 商品状态（1 在售，2 售磬，3 下架）
    * @apiSuccessExample  {json} success-example
    * {
    *    "code" : 200,

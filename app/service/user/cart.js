@@ -14,7 +14,7 @@ class CartService extends Service {
       include: [
         {
           model: ctx.model.Goods,
-          attributes: [ 'name', 'price', 'img_md' ],
+          attributes: [ 'name', 'price', 'img_md', 'status' ],
         },
       ],
       distinct: true,
@@ -26,10 +26,10 @@ class CartService extends Service {
     const { ctx } = this;
     const { openid } = ctx.state.user;
     const cart = await ctx.model.Carts.findOne({
-      where: { uid: openid, status: 1, goodsId },
+      where: { uid: openid, goodsId },
     });
     if (cart) {
-      const result = await cart.update({ goodsNum });
+      const result = await cart.update({ goodsNum, status: 1 });
       return result;
     }
     const result = await ctx.model.Carts.create({

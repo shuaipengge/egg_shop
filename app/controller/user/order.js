@@ -79,6 +79,42 @@ class GoodsController extends Controller {
     }
     ctx.body = { code: -1, msg: '获取失败' };
   }
+
+  /**
+   * @api {post} /api/v1/order 确认订单
+   * @apiGroup Order
+   * @apiName SettleOrder
+   * @apiDescription 点击结算之后传参至确认订单，此时api返回确认订单页面需要的数据，此时订单页面需要用户确认商品价格、数量、支付金额、收货地址
+   *
+   * @apiSampleRequest /api/v1/order
+   * @apiHeader {String} Authorization token
+   *
+   * @apiParam {Number[]} goods 欲购买的商品id
+   *
+   * @apiParamExample {json} 请求参数格式
+   * {
+   *    "goods": [id1, id2, id3]
+   * }
+   *
+   * @apiUse DefineError
+   * @apiSuccessExample  {json} success-example
+   * {
+   *    "code" : 200,
+   *    "msg": "查询成功",
+   *    "data": {
+   *      address, goods
+   *    }
+   * }
+   */
+  async setOrder() {
+    const { ctx } = this;
+    const result = await ctx.service.user.order.setOrder(ctx.request.body);
+    if (result) {
+      ctx.body = { code: 200, msg: '订单详情', data: result };
+      return;
+    }
+    ctx.body = { code: -1, msg: '获取失败' };
+  }
 }
 
 module.exports = GoodsController;
