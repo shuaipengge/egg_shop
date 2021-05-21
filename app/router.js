@@ -18,4 +18,7 @@ module.exports = app => {
 
   router.get('/api/v1/goods', controller.user.goods.getGoodsList);
   router.get('/api/v1/goods/:id', controller.user.goods.getGoodsInfo);
+
+  router.get('/api/v1/order', jwt, controller.user.order.getOrderList);
+  router.get('/api/v1/order/:id', jwt, controller.user.order.getOrderInfo);
 };

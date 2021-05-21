@@ -3,7 +3,7 @@
 module.exports = app => {
   const { INTEGER, DECIMAL } = app.Sequelize;
 
-  const OrderGoods = app.model.define('order-goods', {
+  const OrderGoods = app.model.define('order_goods', {
     id: {
       type: INTEGER,
       primaryKey: true,
@@ -21,7 +21,12 @@ module.exports = app => {
     },
   });
 
-  OrderGoods.associate = () => {};
+  OrderGoods.associate = () => {
+    OrderGoods.belongsTo(app.model.Goods, {
+      foreignKey: 'goods_id',
+      targetKey: 'id',
+    });
+  };
 
   return OrderGoods;
 };

@@ -27,7 +27,17 @@ module.exports = app => {
     comment_state: { type: TINYINT, comment: '评论状态' },
   });
 
-  Order.associate = () => {};
+  Order.associate = () => {
+    Order.belongsTo(app.model.OrderStatus, {
+      foreignKey: 'id',
+      targetKey: 'id',
+    });
+
+    Order.hasMany(app.model.OrderGoods, {
+      foreignKey: 'order_id',
+      targetKey: 'id',
+    });
+  };
 
   return Order;
 };

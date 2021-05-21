@@ -618,6 +618,303 @@ define({ "api": [
     }
   },
   {
+    "type": "get",
+    "url": "/api/v1/order/:id",
+    "title": "订单详情",
+    "group": "Order",
+    "name": "getOrderInfo",
+    "description": "<p>获取订单详情</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/order/:id"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>订单ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>商品ID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "payment",
+            "description": "<p>订单价格</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "pay_time",
+            "description": "<p>支付时间</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "order_id",
+            "description": "<p>订单ID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "ship_number",
+            "description": "<p>快递单号</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "ship_name",
+            "description": "<p>物流名称</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>商品名称</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "img_md",
+            "description": "<p>商品图片</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>商品价格</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "goods_num",
+            "description": "<p>商品数量</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"获取成功\"\n   \"data\": 订单内容\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/user/order.js",
+    "groupTitle": "Order",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/order",
+    "title": "订单列表",
+    "group": "Order",
+    "name": "getOrderList",
+    "description": "<p>获取订单列表</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/order"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "status",
+            "description": "<p>订单状态：0-待付款，3-待发货，4-待收货，5-待评价</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pageSize",
+            "description": "<p>每页条数</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数格式:",
+          "content": "?pageNum=1&pageSize=10",
+          "type": "string"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>商品ID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "order_id",
+            "description": "<p>订单ID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>商品名称</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "img_md",
+            "description": "<p>商品图片</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>商品价格</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "goods_num",
+            "description": "<p>商品数量</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"获取成功\"\n   \"data\": {\n     \"count\": 10,\n     \"goods\": []\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/user/order.js",
+    "groupTitle": "Order",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
     "type": "post",
     "url": "/api/v1/user/token",
     "title": "获取token",

@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const { INTEGER, DATE, DECIMAL } = Sequelize;
     await queryInterface.createTable(
-      'order-goods',
+      'order_goods',
       {
         id: {
           type: INTEGER,
