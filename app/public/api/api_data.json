@@ -738,13 +738,123 @@
   {
     "type": "post",
     "url": "/api/v1/order",
+    "title": "提交订单",
+    "group": "Order",
+    "name": "CreatOrder",
+    "description": "<p>确认订单页面，提交订单按钮 将购物车中的商品转移到订单中，生成新的订单</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/order"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Object[]",
+            "optional": false,
+            "field": "goodsList",
+            "description": "<p>欲购买的商品id和数量</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "addressId",
+            "description": "<p>收货地址ID</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "payment",
+            "description": "<p>支付价格</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数格式",
+          "content": "{\n   \"goodsList\": [{\"id\":1, \"num\":2}, {\"id\":2, \"num\":1}],\n   \"addressId\": 1,\n   \"payment\": 499900\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "priceSum",
+            "description": "<p>订单总价</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"查询成功\",\n   \"data\": {\n     address, goods\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/user/order.js",
+    "groupTitle": "Order",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/order/check",
     "title": "确认订单",
     "group": "Order",
     "name": "SettleOrder",
     "description": "<p>点击结算之后传参至确认订单，此时api返回确认订单页面需要的数据，此时订单页面需要用户确认商品价格、数量、支付金额、收货地址</p>",
     "sampleRequest": [
       {
-        "url": "/api/v1/order"
+        "url": "/api/v1/order/check"
       }
     ],
     "header": {
@@ -781,6 +891,17 @@
       ]
     },
     "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "priceSum",
+            "description": "<p>订单总价</p>"
+          }
+        ]
+      },
       "examples": [
         {
           "title": "success-example",

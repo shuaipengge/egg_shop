@@ -21,7 +21,8 @@ module.exports = app => {
 
   router.get('/api/v1/order', jwt, controller.user.order.getOrderList);
   router.get('/api/v1/order/:id', jwt, controller.user.order.getOrderInfo);
-  router.post('/api/v1/order', jwt, controller.user.order.setOrder);
+  router.post('/api/v1/order/check', jwt, controller.user.order.setOrder);
+  router.post('/api/v1/order', jwt, controller.user.order.createOrder);
 
   router.get('/api/v1/address/default', jwt, controller.user.address.getDefaultAddress);
 };

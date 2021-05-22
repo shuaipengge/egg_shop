@@ -18,7 +18,7 @@ module.exports = {
         received_time: { type: DATE, comment: '收货时间' },
         finish_time: { type: DATE, comment: '交易完成时间' },
         close_time: { type: DATE, comment: '交易关闭时间' },
-        order_state: { type: INTEGER, comment: '状态字典' },
+        order_state: { type: INTEGER, defaultValue: 0, comment: '状态字典' },
         status: {
           type: INTEGER,
           allowNull: false,

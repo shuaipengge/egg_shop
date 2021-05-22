@@ -14,7 +14,7 @@ class CartService extends Service {
       include: [
         {
           model: ctx.model.Goods,
-          attributes: [ 'name', 'price', 'img_md', 'status' ],
+          attributes: [ 'id', 'name', 'price', 'img_md', 'status' ],
         },
       ],
       distinct: true,
