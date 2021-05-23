@@ -1240,6 +1240,130 @@ define({ "api": [
   },
   {
     "type": "post",
+    "url": "/api/v1/order/pay",
+    "title": "订单支付",
+    "group": "Order",
+    "name": "orderPay",
+    "description": "<p>拉取支付参数</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/order/pay"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "orderId",
+            "description": "<p>要支付的订单ID</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数格式",
+          "content": "{\n   \"orderId\": 1\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "nonceStr",
+            "description": "<p>订单总价</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "package",
+            "description": "<p>订单总价</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "paySing",
+            "description": "<p>订单总价</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "signType",
+            "description": "<p>订单总价</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "timeStamp",
+            "description": "<p>订单总价</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"查询成功\",\n   \"data\": {\n     支付参数\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/user/order.js",
+    "groupTitle": "Order",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
     "url": "/api/v1/user/token",
     "title": "获取token",
     "group": "User",

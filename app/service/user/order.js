@@ -128,8 +128,11 @@ class OrderService extends Service {
       const [ results ] = await ctx.model.query(sql, { transaction: t });
       if (results.changedRows < goodsList.length) throw new Error('changedRows Error 商品库存更新异常');
 
+      // TODO ship_free 判断订单邮费
+      const ship_free = 0;
+
       // 写入order
-      const newOrder = await ctx.model.Order.create({ uid: openid, payment }, { transaction: t });
+      const newOrder = await ctx.model.Order.create({ uid: openid, payment, ship_free }, { transaction: t });
       if (!newOrder.id) throw new Error('createOrder Error 生成订单异常');
 
       // 写入order_address
@@ -172,6 +175,19 @@ class OrderService extends Service {
       await t.rollback();
       return { code: -1, msg: err.message };
     }
+  }
+
+  async orderPay(body) {
+    const { ctx } = this;
+    const { orderId } = body;
+    // TODO 订单支付
+    const result = await ctx.model.Order.findByPk(orderId, {
+      attributes: [ 'id', 'uid', 'payment', 'ship_free', 'order_state' ],
+      raw: true,
+    });
+    console.log(result.uid);
+    console.log(parseInt(result.payment) + parseInt(result.ship_free));
+    return result;
   }
 }
 module.exports = OrderService;

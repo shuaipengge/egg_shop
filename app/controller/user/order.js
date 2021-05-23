@@ -168,6 +168,45 @@ class GoodsController extends Controller {
     const result = await ctx.service.user.order.createOrder(ctx.request.body);
     ctx.body = result;
   }
+
+  /**
+   * @api {post} /api/v1/order/pay 订单支付
+   * @apiGroup Order
+   * @apiName orderPay
+   * @apiDescription 拉取支付参数
+   *
+   * @apiSampleRequest /api/v1/order/pay
+   * @apiHeader {String} Authorization token
+   *
+   * @apiParam {Number} orderId 要支付的订单ID
+   *
+   * @apiSuccess {String} nonceStr 订单总价
+   * @apiSuccess {String} package 订单总价
+   * @apiSuccess {String} paySing 订单总价
+   * @apiSuccess {String} signType 订单总价
+   * @apiSuccess {String} timeStamp 订单总价
+   *
+   * @apiParamExample {json} 请求参数格式
+   * {
+   *    "orderId": 1
+   * }
+   *
+   * @apiUse DefineError
+   * @apiSuccessExample  {json} success-example
+   * {
+   *    "code" : 200,
+   *    "msg": "查询成功",
+   *    "data": {
+   *      支付参数
+   *    }
+   * }
+   */
+  async orderPay() {
+    // TODO 判断订单是否存在
+    const { ctx } = this;
+    const result = await ctx.service.user.order.orderPay(ctx.request.body);
+    ctx.body = result;
+  }
 }
 
 module.exports = GoodsController;
