@@ -26,4 +26,7 @@ module.exports = app => {
   router.post('/api/v1/order/pay', jwt, controller.user.order.orderPay);
 
   router.get('/api/v1/address/default', jwt, controller.user.address.getDefaultAddress);
+  router.post('/api/v1/address', jwt, controller.user.address.createAddress);
+  router.get('/api/v1/address', jwt, controller.user.address.getAddressList);
+  router.put('/api/v1/address/:id', jwt, controller.user.address.updateAddress);
 };
