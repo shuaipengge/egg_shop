@@ -4,10 +4,13 @@
  * @param {Egg.Application} app - egg application
  */
 module.exports = app => {
-  const { router, controller, jwt } = app;
-  const { user, admin } = controller;
+  const {
+    router,
+    controller: { user, admin },
+    jwt,
+  } = app;
 
-  router.get('/', controller.home.index);
+  // router.get('/', controller.home.index);
 
   // router.get('/test', controller.home.test);
 
@@ -41,4 +44,6 @@ module.exports = app => {
   router.post('/api/v1/admin/role', admin.role.createRole);
   router.put('/api/v1/admin/role/:id', admin.role.updateRole);
   router.del('/api/v1/admin/role/:id', admin.role.deleteRole);
+  router.post('/api/v1/admin/roleMenu', admin.role.createRoleMenu);
+  router.del('/api/v1/admin/roleMenu', admin.role.deleteRoleMenu);
 };

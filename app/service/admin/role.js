@@ -4,20 +4,26 @@ const Service = require('egg').Service;
 
 class RoleService extends Service {
   async getRoleList() {
-    const { ctx } = this;
-    const result = await ctx.model.Role.findAll();
+    const {
+      ctx: { model },
+    } = this;
+    const result = await model.Role.findAll();
     return result;
   }
 
   async createRole(body) {
-    const { ctx } = this;
-    const result = await ctx.model.Role.create({ role_name: body.name });
+    const {
+      ctx: { model },
+    } = this;
+    const result = await model.Role.create({ role_name: body.name });
     return result;
   }
 
   async updateRole(id, body) {
-    const { ctx } = this;
-    const result = await ctx.model.Role.update(
+    const {
+      ctx: { model },
+    } = this;
+    const result = await model.Role.update(
       { role_name: body.name },
       { where: { id } }
     );
@@ -25,11 +31,35 @@ class RoleService extends Service {
   }
 
   async deleteRole(id) {
-    const { ctx } = this;
-    const result = await ctx.model.Role.destroy({
+    const {
+      ctx: { model },
+    } = this;
+    const result = await model.Role.destroy({
       where: {
         id,
       },
+    });
+    return result;
+  }
+
+  async createRoleMenu(body) {
+    const {
+      ctx: { model },
+    } = this;
+    let result = await model.RoleMenu.findOne({
+      where: body,
+    });
+    if (result) return result;
+    result = await model.RoleMenu.create(body);
+    return result;
+  }
+
+  async deleteRoleMenu(body) {
+    const {
+      ctx: { model },
+    } = this;
+    const result = await model.RoleMenu.destroy({
+      where: { ...body },
     });
     return result;
   }

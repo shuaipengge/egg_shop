@@ -125,6 +125,77 @@ class RoleController extends Controller {
     }
     ctx.body = { code: -1, msg: '删除失败' };
   }
+
+  /**
+   * @api {post} /api/v1/admin/roleMenu 添加角色菜单
+   * @apiGroup admin-Role
+   * @apiName createRoleMenu
+   * @apiDescription 添加角色菜单
+   *
+   * @apiSampleRequest /api/v1/admin/roleMenu
+   * @apiHeader {String} Authorization token
+   * @apiParam {Number} role_id 角色id
+   * @apiParam {Number} menu_id 菜单id
+   *
+   * @apiParamExample {json} 请求参数格式
+   * {
+   *     "role_id": 1,
+   *     "menu_id": 2
+   * }
+   *
+   * @apiUse DefineError
+   *
+   * @apiSuccess {Object} data 角色
+   * @apiSuccessExample  {json} success-example
+   * {
+   *    "code" : 200,
+   *    "msg": "添加成功"
+   * }
+   */
+
+  async createRoleMenu() {
+    const { ctx } = this;
+    const data = await ctx.service.admin.role.createRoleMenu(ctx.request.body);
+    if (data.id) {
+      ctx.body = { code: 200, msg: '添加成功', data };
+      return;
+    }
+    ctx.body = { code: -1, msg: '添加失败' };
+  }
+
+  /**
+   * @api {delete} /api/v1/admin/roleMenu 删除角色菜单
+   * @apiGroup admin-Role
+   * @apiName deleteRoleMenu
+   * @apiDescription 删除角色菜单
+   *
+   * @apiSampleRequest /api/v1/admin/roleMenu
+   * @apiHeader {String} Authorization token.
+   * @apiParam {Number} role_id 角色id
+   * @apiParam {Number} menu_id 菜单id
+   *
+   * @apiParamExample {json} 请求参数格式
+   * {
+   *     "role_id": 1,
+   *     "menu_id": 2
+   * }
+   *
+   * @apiUse DefineError
+   * @apiSuccessExample  {json} success-example
+   * {
+   *    "code" : 200,
+   *    "msg": "删除成功"
+   * }
+   */
+  async deleteRoleMenu() {
+    const { ctx } = this;
+    const data = await ctx.service.admin.role.deleteRoleMenu(ctx.request.body);
+    if (data) {
+      ctx.body = { code: 200, msg: '删除成功', data };
+      return;
+    }
+    ctx.body = { code: -1, msg: '删除失败' };
+  }
 }
 
 module.exports = RoleController;
