@@ -63,6 +63,50 @@ class RoleService extends Service {
     });
     return result;
   }
+
+  async getRoleMenu(id) {
+    const {
+      ctx: { model },
+    } = this;
+    const menuList = await model.Menu.findAll({
+      distinct: true,
+      raw: true,
+    });
+    const menu = await model.RoleMenu.findAll({
+      attributes: [],
+      where: { role_id: id },
+      include: [{ model: model.Menu }],
+      distinct: true,
+      raw: true,
+    });
+
+    // 标记菜单选择状态
+    const allMenu = menuList.map(item => {
+      const flag = menu.find(element => {
+        return element['menu.id'] === item.id;
+      });
+      return flag ? item : null;
+    });
+
+    // 筛选出一级菜单
+    const menu_1st = menuList.filter(item => (item.pid === 0 ? item : null));
+
+    // 递归循环数据
+    const praseToTree = array => {
+      array.forEach(parent => {
+        parent.children = [];
+        allMenu.forEach(child => {
+          if (child && child.pid === parent.id) {
+            parent.children.push(child);
+          }
+        });
+        praseToTree(parent.children);
+      });
+    };
+    praseToTree(menu_1st);
+
+    return menu_1st;
+  }
 }
 
 module.exports = RoleService;

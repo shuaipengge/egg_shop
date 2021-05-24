@@ -13,7 +13,12 @@ module.exports = app => {
     menu_id: { type: INTEGER, comment: '权限ID' },
   });
 
-  RoleMenu.associate = () => {};
+  RoleMenu.associate = () => {
+    RoleMenu.belongsTo(app.model.Menu, {
+      foreignKey: 'menu_id',
+      targetKey: 'id',
+    });
+  };
 
   return RoleMenu;
 };

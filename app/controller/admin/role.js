@@ -196,6 +196,34 @@ class RoleController extends Controller {
     }
     ctx.body = { code: -1, msg: '删除失败' };
   }
+
+  /**
+   * @api {get} /api/v1/admin/roleMenu/:id 根据角色id获取菜单配置
+   * @apiGroup admin-Role
+   * @apiName getRoleMenu
+   * @apiDescription 根据角色id获取菜单配置
+   *
+   * @apiSampleRequest /api/v1/admin/roleMenu/:id
+   * @apiHeader {String} Authorization token.
+   * @apiParam {Number} id 角色id
+   *
+   * @apiUse DefineError
+   * @apiSuccessExample  {json} success-example
+   * {
+   *    "code" : 200,
+   *    "msg": "获取成功",
+   *    "data": []
+   * }
+   */
+  async getRoleMenu() {
+    const { ctx } = this;
+    const data = await ctx.service.admin.role.getRoleMenu(ctx.params.id);
+    if (data) {
+      ctx.body = { code: 200, msg: '获取成功', data };
+      return;
+    }
+    ctx.body = { code: -1, msg: '获取失败' };
+  }
 }
 
 module.exports = RoleController;

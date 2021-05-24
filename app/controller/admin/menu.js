@@ -7,7 +7,7 @@ class MenuController extends Controller {
    * @api {post} /api/v1/admin/menu 添加子菜单
    * @apiGroup admin-Menu
    * @apiName createMenu
-   * @apiDescription 添加子菜单
+   * @apiDescription 添加子菜单（根菜单pid=0）
    *
    * @apiSampleRequest /api/v1/admin/menu
    * @apiHeader {String} Authorization token
