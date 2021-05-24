@@ -10,7 +10,7 @@ module.exports = app => {
       autoIncrement: true,
       comment: '角色ID',
     },
-    role_namme: { type: STRING, comment: '角色名称' },
+    role_name: { type: STRING, comment: '角色名称' },
     state: { type: INTEGER, comment: ' 角色状态' },
   });
 

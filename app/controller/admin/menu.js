@@ -79,7 +79,7 @@ class MenuController extends Controller {
   async updateMenu() {
     const { ctx } = this;
     const data = await ctx.service.admin.menu.updateMenu(ctx.params.id, ctx.request.body);
-    if (data.length) {
+    if (data[0]) {
       ctx.body = { code: 200, msg: '修改成功', data };
       return;
     }

@@ -36,4 +36,9 @@ module.exports = app => {
   router.put('/api/v1/admin/menu/:id', admin.menu.updateMenu);
   router.del('/api/v1/admin/menu/:id', admin.menu.deleteMenu);
   router.get('/api/v1/admin/menu/sub/:id', admin.menu.getSubMenu);
+
+  router.get('/api/v1/admin/role', admin.role.getRoleList);
+  router.post('/api/v1/admin/role', admin.role.createRole);
+  router.put('/api/v1/admin/role/:id', admin.role.updateRole);
+  router.del('/api/v1/admin/role/:id', admin.role.deleteRole);
 };
