@@ -5,28 +5,35 @@
  */
 module.exports = app => {
   const { router, controller, jwt } = app;
+  const { user, admin } = controller;
+
   router.get('/', controller.home.index);
 
-  router.get('/test', controller.home.test);
+  // router.get('/test', controller.home.test);
 
-  router.post('/api/v1/user/token', controller.user.user.getToken);
-  router.put('/api/v1/user', jwt, controller.user.user.updateUserInfo);
+  router.post('/api/v1/user/token', user.user.getToken);
+  router.put('/api/v1/user', jwt, user.user.updateUserInfo);
 
-  router.get('/api/v1/cart', jwt, controller.user.cart.getCartList);
-  router.post('/api/v1/cart', jwt, controller.user.cart.cartAddGoods);
-  router.del('/api/v1/cart', jwt, controller.user.cart.cartDelGoods);
+  router.get('/api/v1/cart', jwt, user.cart.getCartList);
+  router.post('/api/v1/cart', jwt, user.cart.cartAddGoods);
+  router.del('/api/v1/cart', jwt, user.cart.cartDelGoods);
 
-  router.get('/api/v1/goods', controller.user.goods.getGoodsList);
-  router.get('/api/v1/goods/:id', controller.user.goods.getGoodsInfo);
+  router.get('/api/v1/goods', user.goods.getGoodsList);
+  router.get('/api/v1/goods/:id', user.goods.getGoodsInfo);
 
-  router.get('/api/v1/order', jwt, controller.user.order.getOrderList);
-  router.get('/api/v1/order/:id', jwt, controller.user.order.getOrderInfo);
-  router.post('/api/v1/order/check', jwt, controller.user.order.setOrder);
-  router.post('/api/v1/order', jwt, controller.user.order.createOrder);
-  router.post('/api/v1/order/pay', jwt, controller.user.order.orderPay);
+  router.get('/api/v1/order', jwt, user.order.getOrderList);
+  router.get('/api/v1/order/:id', jwt, user.order.getOrderInfo);
+  router.post('/api/v1/order/check', jwt, user.order.setOrder);
+  router.post('/api/v1/order', jwt, user.order.createOrder);
+  router.post('/api/v1/order/pay', jwt, user.order.orderPay);
 
-  router.get('/api/v1/address/default', jwt, controller.user.address.getDefaultAddress);
-  router.post('/api/v1/address', jwt, controller.user.address.createAddress);
-  router.get('/api/v1/address', jwt, controller.user.address.getAddressList);
-  router.put('/api/v1/address/:id', jwt, controller.user.address.updateAddress);
+  router.get('/api/v1/address/default', jwt, user.address.getDefaultAddress);
+  router.post('/api/v1/address', jwt, user.address.createAddress);
+  router.get('/api/v1/address', jwt, user.address.getAddressList);
+  router.put('/api/v1/address/:id', jwt, user.address.updateAddress);
+
+  router.post('/api/v1/admin/menu', admin.menu.createMenu);
+  router.put('/api/v1/admin/menu/:id', admin.menu.updateMenu);
+  router.del('/api/v1/admin/menu/:id', admin.menu.deleteMenu);
+  router.get('/api/v1/admin/menu/sub/:id', admin.menu.getSubMenu);
 };

@@ -2034,5 +2034,402 @@
         }
       ]
     }
+  },
+  {
+    "type": "post",
+    "url": "/api/v1/admin/menu",
+    "title": "添加子菜单",
+    "group": "admin-Menu",
+    "name": "createMenu",
+    "description": "<p>添加子菜单</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/admin/menu"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>分类名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pid",
+            "description": "<p>父id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "path",
+            "description": "<p>菜单url地址</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "order",
+            "description": "<p>菜单显示顺序，按照数字从小到大排序</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数格式",
+          "content": "{\n    \"name\": \"添加菜单\",\n    \"pid\": 1,\n    \"path\": \"/index/add\",\n    \"order\": 1001\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "menu",
+            "description": "<p>菜单</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"查询成功\",\n   data\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/admin/menu.js",
+    "groupTitle": "admin-Menu",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/api/v1/admin/menu/:id",
+    "title": "删除子菜单",
+    "group": "admin-Menu",
+    "name": "deleteMenu",
+    "description": "<p>删除子菜单</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/admin/menu/:id"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>菜单ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"删除成功\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/admin/menu.js",
+    "groupTitle": "admin-Menu",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/admin/menu/sub/:id",
+    "title": "获取子级菜单",
+    "group": "admin-Menu",
+    "name": "getSubMenu",
+    "description": "<p>获取子级菜单</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/admin/menu/sub/:id"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>父级菜单id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"删除成功\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/admin/menu.js",
+    "groupTitle": "admin-Menu",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "put",
+    "url": "/api/v1/admin/menu/:id",
+    "title": "更新菜单",
+    "group": "admin-Menu",
+    "name": "updateMenu",
+    "description": "<p>更新菜单</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/admin/menu/:id"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>菜单id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>分类名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "pid",
+            "description": "<p>父id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "path",
+            "description": "<p>菜单url地址</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "order",
+            "description": "<p>菜单显示顺序，按照数字从小到大排序</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数格式",
+          "content": "{\n    \"name\": \"添加菜单\",\n    \"pid\": 1,\n    \"path\": \"/index/add\",\n    \"order\": 1001\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Object",
+            "optional": false,
+            "field": "menu",
+            "description": "<p>菜单</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"查询成功\",\n   data\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/admin/menu.js",
+    "groupTitle": "admin-Menu",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
   }
 ]

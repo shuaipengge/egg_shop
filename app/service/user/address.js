@@ -28,7 +28,6 @@ class AddressService extends Service {
       where: { uid: openid },
       distinct: true,
     });
-    console.log(result);
     return { count: result.count, address: result.rows };
   }
 

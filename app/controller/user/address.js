@@ -135,7 +135,6 @@ class AddressController extends Controller {
   async updateAddress() {
     const { ctx } = this;
     const data = await ctx.service.user.address.updateAddress(ctx.request.body, ctx.params.id);
-    console.log(data);
     if (data.length > 0) {
       ctx.body = { code: 200, msg: '修改成功' };
       return;
