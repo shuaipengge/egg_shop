@@ -21,7 +21,12 @@ module.exports = app => {
     state: { type: INTEGER, comment: '账号状态' },
   });
 
-  Admin.associate = () => {};
+  Admin.associate = () => {
+    Admin.belongsTo(app.model.AdminRole, {
+      foreignKey: 'id',
+      targetKey: 'admin_id',
+    });
+  };
 
   return Admin;
 };

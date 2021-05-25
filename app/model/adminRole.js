@@ -9,7 +9,12 @@ module.exports = app => {
     role_id: { type: STRING, comment: '角色ID' },
   });
 
-  AdminRole.associate = () => {};
+  AdminRole.associate = () => {
+    AdminRole.belongsTo(app.model.Role, {
+      foreignKey: 'role_id',
+      targetKey: 'id',
+    });
+  };
 
   return AdminRole;
 };

@@ -35,6 +35,13 @@ module.exports = app => {
   router.get('/api/v1/address', jwt, user.address.getAddressList);
   router.put('/api/v1/address/:id', jwt, user.address.updateAddress);
 
+  router.get('/api/v1/admin/admin', admin.admin.getAdminList);
+  router.get('/api/v1/admin/admin/:id', admin.admin.getAdminInfo);
+  router.del('/api/v1/admin/admin/:id', admin.admin.deleteAdmin);
+  router.put('/api/v1/admin/admin/:id', admin.admin.updateAdmin);
+  router.post('/api/v1/admin/admin/login', admin.admin.adminLogin);
+  router.post('/api/v1/admin/admin/register', admin.admin.adminRegister);
+
   router.post('/api/v1/admin/menu', admin.menu.createMenu);
   router.put('/api/v1/admin/menu/:id', admin.menu.updateMenu);
   router.del('/api/v1/admin/menu/:id', admin.menu.deleteMenu);
