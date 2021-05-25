@@ -35,23 +35,23 @@ module.exports = app => {
   router.get('/api/v1/address', jwt, user.address.getAddressList);
   router.put('/api/v1/address/:id', jwt, user.address.updateAddress);
 
-  router.get('/api/v1/admin/admin', admin.admin.getAdminList);
-  router.get('/api/v1/admin/admin/:id', admin.admin.getAdminInfo);
-  router.del('/api/v1/admin/admin/:id', admin.admin.deleteAdmin);
-  router.put('/api/v1/admin/admin/:id', admin.admin.updateAdmin);
+  router.get('/api/v1/admin/admin', jwt, admin.admin.getAdminList);
+  router.get('/api/v1/admin/admin/:id', jwt, admin.admin.getAdminInfo);
+  router.del('/api/v1/admin/admin/:id', jwt, admin.admin.deleteAdmin);
+  router.put('/api/v1/admin/admin/:id', jwt, admin.admin.updateAdmin);
   router.post('/api/v1/admin/admin/login', admin.admin.adminLogin);
   router.post('/api/v1/admin/admin/register', admin.admin.adminRegister);
 
-  router.post('/api/v1/admin/menu', admin.menu.createMenu);
-  router.put('/api/v1/admin/menu/:id', admin.menu.updateMenu);
-  router.del('/api/v1/admin/menu/:id', admin.menu.deleteMenu);
-  router.get('/api/v1/admin/menu/sub/:id', admin.menu.getSubMenu);
+  router.post('/api/v1/admin/menu', jwt, admin.menu.createMenu);
+  router.put('/api/v1/admin/menu/:id', jwt, admin.menu.updateMenu);
+  router.del('/api/v1/admin/menu/:id', jwt, admin.menu.deleteMenu);
+  router.get('/api/v1/admin/menu/sub/:id', jwt, admin.menu.getSubMenu);
 
-  router.get('/api/v1/admin/role', admin.role.getRoleList);
-  router.post('/api/v1/admin/role', admin.role.createRole);
-  router.put('/api/v1/admin/role/:id', admin.role.updateRole);
-  router.del('/api/v1/admin/role/:id', admin.role.deleteRole);
-  router.post('/api/v1/admin/roleMenu', admin.role.createRoleMenu);
-  router.del('/api/v1/admin/roleMenu', admin.role.deleteRoleMenu);
-  router.get('/api/v1/admin/roleMenu/:id', admin.role.getRoleMenu);
+  router.get('/api/v1/admin/role', jwt, admin.role.getRoleList);
+  router.post('/api/v1/admin/role', jwt, admin.role.createRole);
+  router.put('/api/v1/admin/role/:id', jwt, admin.role.updateRole);
+  router.del('/api/v1/admin/role/:id', jwt, admin.role.deleteRole);
+  router.post('/api/v1/admin/roleMenu', jwt, admin.role.createRoleMenu);
+  router.del('/api/v1/admin/roleMenu', jwt, admin.role.deleteRoleMenu);
+  router.get('/api/v1/admin/roleMenu/:id', jwt, admin.role.getRoleMenu);
 };
