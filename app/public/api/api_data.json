@@ -3207,6 +3207,637 @@
   },
   {
     "type": "post",
+    "url": "/api/v1/admin/goods",
+    "title": "添加商品",
+    "group": "admin-Goods",
+    "name": "createGoods",
+    "description": "<p>添加商品</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/admin/goods"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "cate_1st",
+            "description": "<p>一级分类id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "cate_2nd",
+            "description": "<p>二级分类id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "cate_3rd",
+            "description": "<p>三级分类id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>商品名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>商品价格</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "hot_point",
+            "description": "<p>商品热点描述</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "market_price",
+            "description": "<p>市场价</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "cost",
+            "description": "<p>成本价格</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "discount",
+            "description": "<p>折扣</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "inventory",
+            "description": "<p>商品库存</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "article_no",
+            "description": "<p>商品货号</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "sales_no",
+            "description": "<p>商品销量</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "img_lg",
+            "description": "<p>商品大图</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "img_md",
+            "description": "<p>商品小图</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "slider",
+            "description": "<p>商品轮播图</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "brand",
+            "description": "<p>商品品牌</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "detail",
+            "description": "<p>商品详情</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "freight",
+            "description": "<p>商品运费</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "status",
+            "description": "<p>商品状态</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数格式:",
+          "content": "{\n   \"cate_1st\": null,\n   \"cate_2nd\": 2,\n   \"cate_3rd\": null,\n   \"name\": \"IKBC无线机械键盘\",\n   \"price\": 599,\n   \"hot_point\": \"新品首发IKBC机械键盘蓝牙6.0 多设备链接一键切换\",\n   \"market_price\": 699,\n   \"cost\": 399,\n   \"discount\": 0.8,\n   \"inventory\": 300,\n   \"article_no\": 683748245,\n   \"sales_no\": null,\n   \"img_lg\": \"http:img\",\n   \"img_md\": \"http:img\",\n   \"slider\": \"imgURL1,imgURL2,imgURL3\",\n   \"brand\": \"IKBC\",\n   \"detail\": \"<p><img src='111'></p>\",\n   \"freight\": 8,\n   \"status\": 1\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"获取成功\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/admin/goods.js",
+    "groupTitle": "admin-Goods",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "delete",
+    "url": "/api/v1/admin/goods/:id",
+    "title": "删除商品",
+    "group": "admin-Goods",
+    "name": "deleteGoods",
+    "description": "<p>删除商品</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/admin/goods/:id"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>商品id</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"删除成功\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/admin/goods.js",
+    "groupTitle": "admin-Goods",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/admin/goods/:id",
+    "title": "商品详情",
+    "group": "admin-Goods",
+    "name": "getGoodsInfo",
+    "description": "<p>获取商品详情</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/admin/goods/:id"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>商品ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"获取成功\"\n   \"data\": {\n     goods\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/admin/goods.js",
+    "groupTitle": "admin-Goods",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/admin/goods",
+    "title": "商品列表",
+    "group": "admin-Goods",
+    "name": "getGoodsList",
+    "description": "<p>获取商品列表</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/admin/goods"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "cate_1st",
+            "description": "<p>一级分类id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "cate_2nd",
+            "description": "<p>二级分类id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "cate_3rd",
+            "description": "<p>三级分类id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "allowedValues": [
+              "\"ASC\"",
+              "\"DESC\""
+            ],
+            "optional": true,
+            "field": "sortByPrice",
+            "description": "<p>按照价格排序 从小到大-ASC，从大到小-DESC</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pageSize",
+            "description": "<p>每页条数</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数格式:",
+          "content": "?pageNum=1&pageSize=10",
+          "type": "string"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>商品ID</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>商品名称</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "price",
+            "description": "<p>商品价格</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "hot_point",
+            "description": "<p>商品热点描述</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "market_price",
+            "description": "<p>市场价</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "discount",
+            "description": "<p>折扣</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "slider",
+            "description": "<p>商品轮播图</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "sales_no",
+            "description": "<p>商品销量</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "detail",
+            "description": "<p>商品详情</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "inventory",
+            "description": "<p>商品库存</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "status",
+            "description": "<p>商品状态</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"获取成功\"\n   \"data\": {\n     \"count\": 10,\n     \"goods\": []\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/admin/goods.js",
+    "groupTitle": "admin-Goods",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "put",
+    "url": "/api/v1/admin/goods/:id",
+    "title": "修改商品",
+    "group": "admin-Goods",
+    "name": "updateGoods",
+    "description": "<p>修改商品</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/admin/goods/:id"
+      }
+    ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token.</p>"
+          }
+        ]
+      }
+    },
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>商品id</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数格式:",
+          "content": "{\n   \"cate_1st\": null,\n   \"cate_2nd\": 2,\n   \"cate_3rd\": null,\n   \"name\": \"IKBC无线机械键盘\",\n   \"price\": 599,\n   \"hot_point\": \"新品首发IKBC机械键盘蓝牙6.0 多设备链接一键切换\",\n   \"market_price\": 699,\n   \"cost\": 399,\n   \"discount\": 0.8,\n   \"inventory\": 300,\n   \"article_no\": 683748245,\n   \"sales_no\": null,\n   \"img_lg\": \"http:img\",\n   \"img_md\": \"http:img\",\n   \"slider\": \"imgURL1,imgURL2,imgURL3\",\n   \"brand\": \"IKBC\",\n   \"detail\": \"<p><img src='111'></p>\",\n   \"freight\": 8,\n   \"status\": 3\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "success": {
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"修改成功\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/admin/goods.js",
+    "groupTitle": "admin-Goods",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "post",
     "url": "/api/v1/admin/menu",
     "title": "添加子菜单",
     "group": "admin-Menu",

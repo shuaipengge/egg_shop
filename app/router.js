@@ -55,9 +55,15 @@ module.exports = app => {
   router.del('/api/v1/admin/roleMenu', jwt, admin.role.deleteRoleMenu);
   router.get('/api/v1/admin/roleMenu/:id', jwt, admin.role.getRoleMenu);
 
-  router.get('/api/v1/admin/categories', admin.categories.getCategories);
-  router.get('/api/v1/admin/categories/sub/:id', admin.categories.getCategoriesSub);
-  router.post('/api/v1/admin/categories', admin.categories.createCategories);
-  router.put('/api/v1/admin/categories/:id', admin.categories.updateCategories);
-  router.del('/api/v1/admin/categories/:id', admin.categories.deleteCategories);
+  router.get('/api/v1/admin/categories', jwt, admin.categories.getCategories);
+  router.get('/api/v1/admin/categories/sub/:id', jwt, admin.categories.getCategoriesSub);
+  router.post('/api/v1/admin/categories', jwt, admin.categories.createCategories);
+  router.put('/api/v1/admin/categories/:id', jwt, admin.categories.updateCategories);
+  router.del('/api/v1/admin/categories/:id', jwt, admin.categories.deleteCategories);
+
+  router.get('/api/v1/admin/goods', jwt, admin.goods.getGoodsList);
+  router.get('/api/v1/admin/goods/:id', jwt, admin.goods.getGoodsInfo);
+  router.put('/api/v1/admin/goods/:id', jwt, admin.goods.updateGoods);
+  router.del('/api/v1/admin/goods/:id', jwt, admin.goods.deleteGoods);
+  router.post('/api/v1/admin/goods', jwt, admin.goods.createGoods);
 };
