@@ -923,6 +923,13 @@
             "group": "Success 200",
             "type": "String",
             "optional": false,
+            "field": "sales_no",
+            "description": "<p>商品销量</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
             "field": "detail",
             "description": "<p>商品详情</p>"
           },
@@ -1103,6 +1110,13 @@
             "optional": false,
             "field": "slider",
             "description": "<p>商品轮播图</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "sales_no",
+            "description": "<p>商品销量</p>"
           },
           {
             "group": "Success 200",

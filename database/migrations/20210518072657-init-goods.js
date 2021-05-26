@@ -22,6 +22,7 @@ module.exports = {
         discount: { type: DECIMAL, comment: '折扣' },
         inventory: { type: INTEGER, comment: '库存' },
         article_no: { type: INTEGER, comment: '货号' },
+        sales_no: { type: INTEGER, comment: '销量' },
         img_lg: { type: STRING, comment: '商品主图-大图' },
         img_md: { type: STRING, comment: '商品主图-小图' },
         slider: { type: STRING, comment: '商品轮播图片' },

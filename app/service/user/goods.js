@@ -6,7 +6,7 @@ class GoodsService extends Service {
   async getGoodsList(query) {
     const { ctx } = this;
     const { pageNum = 1, pageSize = 10, cate_1st, cate_2nd, cate_3rd, sortByPrice } = query;
-    // 拼接查询条件
+    // TODO 复杂查询
     const whereOpts = {};
     let order = [];
     if (cate_1st) whereOpts.cate_1st = cate_1st;
@@ -18,7 +18,7 @@ class GoodsService extends Service {
       limit: parseInt(pageSize),
       offset: parseInt(pageSize) * (parseInt(pageNum) - 1),
       order,
-      attributes: [ 'id', 'name', 'price', 'hot_point', 'market_price', 'discount', 'slider', 'detail', 'inventory', 'status' ],
+      attributes: [ 'id', 'name', 'price', 'hot_point', 'market_price', 'discount', 'slider', 'sales_no', 'detail', 'inventory', 'status' ],
       where: whereOpts,
       distinct: true,
     });
@@ -28,7 +28,7 @@ class GoodsService extends Service {
   async getGoodsInfo(id) {
     const { ctx } = this;
     const result = await ctx.model.Goods.findByPk(parseInt(id), {
-      attributes: [ 'id', 'name', 'price', 'hot_point', 'market_price', 'discount', 'slider', 'detail', 'inventory', 'status' ],
+      attributes: [ 'id', 'name', 'price', 'hot_point', 'market_price', 'discount', 'slider', 'sales_no', 'detail', 'inventory', 'status' ],
     });
     return result;
   }

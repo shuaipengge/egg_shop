@@ -24,6 +24,7 @@ class GoodsController extends Controller {
    * @apiSuccess {Number} market_price 市场价
    * @apiSuccess {Number} discount 折扣
    * @apiSuccess {String} slider 商品轮播图
+   * @apiSuccess {String} sales_no 商品销量
    * @apiSuccess {String} detail 商品详情
    * @apiSuccess {Number} inventory 商品库存
    * @apiSuccess {Number} status 商品状态
@@ -61,6 +62,7 @@ class GoodsController extends Controller {
    * @apiSuccess {Number} market_price 市场价
    * @apiSuccess {Number} discount 折扣
    * @apiSuccess {String} slider 商品轮播图
+   * @apiSuccess {String} sales_no 商品销量
    * @apiSuccess {String} detail 商品详情
    * @apiSuccess {Number} inventory 商品库存
    * @apiSuccess {Number} status 商品状态
