@@ -2340,6 +2340,19 @@ define({ "api": [
         "url": "/api/v1/admin/admin/:id"
       }
     ],
+    "header": {
+      "fields": {
+        "Header": [
+          {
+            "group": "Header",
+            "type": "String",
+            "optional": false,
+            "field": "Authorization",
+            "description": "<p>token.</p>"
+          }
+        ]
+      }
+    },
     "parameter": {
       "fields": {
         "Parameter": [
@@ -4605,6 +4618,159 @@ define({ "api": [
     "version": "0.0.0",
     "filename": "app/controller/admin/order.js",
     "groupTitle": "admin-Order",
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "type": "String",
+            "optional": false,
+            "field": "msg",
+            "description": "<p>错误信息</p>"
+          },
+          {
+            "group": "Error 4xx",
+            "type": "Number",
+            "optional": false,
+            "field": "code",
+            "description": "<p>状态码</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "error-example",
+          "content": "{\n  \"code\": -1\n  \"message\": \"错误提示\"\n}",
+          "type": "json"
+        }
+      ]
+    }
+  },
+  {
+    "type": "get",
+    "url": "/api/v1/admin/rlogs",
+    "title": "请求日志列表",
+    "group": "admin-Rlogs",
+    "name": "getRlogsList",
+    "description": "<p>获取请求日志列表</p>",
+    "sampleRequest": [
+      {
+        "url": "/api/v1/admin/rlogs"
+      }
+    ],
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": true,
+            "field": "ip",
+            "description": "<p>请求ip</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "Number",
+            "optional": true,
+            "field": "uid",
+            "description": "<p>用户id</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pageNum",
+            "description": "<p>页数</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "pageSize",
+            "description": "<p>每页条数</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "请求参数格式:",
+          "content": "?pageNum=1&pageSize=10",
+          "type": "string"
+        }
+      ]
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>日志id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Number",
+            "optional": false,
+            "field": "uid",
+            "description": "<p>用户id</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "username",
+            "description": "<p>用户名</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "method",
+            "description": "<p>请求方法</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "path",
+            "description": "<p>请求PATH</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "query",
+            "description": "<p>请求参数</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "ip",
+            "description": "<p>ip地址</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "Date",
+            "optional": false,
+            "field": "created_at",
+            "description": "<p>时间</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "success-example",
+          "content": "{\n   \"code\" : 200,\n   \"msg\": \"获取成功\"\n   \"data\": {\n     \"count\": 10,\n     \"goods\": []\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "app/controller/admin/rlogs.js",
+    "groupTitle": "admin-Rlogs",
     "error": {
       "fields": {
         "Error 4xx": [

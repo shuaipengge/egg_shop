@@ -16,11 +16,14 @@ module.exports = appInfo => {
   config.keys = appInfo.name + '_1621300708902_1282';
 
   // add your middleware config here
-  config.middleware = [];
+  config.middleware = [ 'requestLogs' ];
 
   // add your user config here
   const userConfig = {
-    // myAppName: 'egg',
+    requestLogs: {
+      // 中间件挂载路由
+      match: '/api/v1/admin',
+    },
   };
 
 

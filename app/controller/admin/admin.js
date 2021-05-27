@@ -50,6 +50,7 @@ class AdminController extends Controller {
    * @apiDescription 获取管理员详情
    *
    * @apiSampleRequest /api/v1/admin/admin/:id
+   * @apiHeader {String} Authorization token.
    * @apiParam {Number} id 管理员ID
    *
    * @apiUse DefineError

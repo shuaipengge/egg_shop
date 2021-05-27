@@ -71,6 +71,8 @@ module.exports = app => {
   router.get('/api/v1/admin/order/:id', jwt, admin.order.getOrderInfo);
   router.put('/api/v1/admin/order/:id', jwt, admin.order.updateOrder);
 
-  router.get('/api/v1/admin/user', admin.user.getUserList);
-  router.get('/api/v1/admin/user/:id', admin.user.getUserInfo);
+  router.get('/api/v1/admin/user', jwt, admin.user.getUserList);
+  router.get('/api/v1/admin/user/:id', jwt, admin.user.getUserInfo);
+
+  router.get('/api/v1/admin/rlogs', jwt, admin.rlogs.getRlogsList);
 };
