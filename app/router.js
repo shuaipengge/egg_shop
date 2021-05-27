@@ -66,4 +66,8 @@ module.exports = app => {
   router.put('/api/v1/admin/goods/:id', jwt, admin.goods.updateGoods);
   router.del('/api/v1/admin/goods/:id', jwt, admin.goods.deleteGoods);
   router.post('/api/v1/admin/goods', jwt, admin.goods.createGoods);
+
+  router.get('/api/v1/admin/order', admin.order.getOrderList);
+  router.get('/api/v1/admin/order/:id', admin.order.getOrderInfo);
+  router.put('/api/v1/admin/order/:id', admin.order.updateOrder);
 };
