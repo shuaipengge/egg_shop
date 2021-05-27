@@ -17,18 +17,23 @@ module.exports = app => {
     country: { type: STRING, comment: '国家' },
     province: { type: STRING, comment: '省' },
     city: { type: STRING, comment: '市' },
-    openid: { type: STRING, comment: '小程序唯一用户表示' },
+    openid: { type: STRING, comment: '小程序唯一用户标识' },
     sessionKey: { type: STRING, comment: '会话密钥' },
     birthday: { type: DATE, comment: '生日' },
     state: { type: INTEGER, comment: '会员状态' },
     pid: { type: STRING, comment: '推荐人' },
     lever: { type: INTEGER, comment: '会员等级' },
     integral: { type: INTEGER, comment: '会员积分' },
-    latitude: { type: FLOAT, comment: '维度' },
+    latitude: { type: FLOAT, comment: '纬度' },
     longitude: { type: FLOAT, comment: '经度' },
   });
 
-  User.associate = () => {};
+  User.associate = () => {
+    User.belongsTo(app.model.User, {
+      foreignKey: 'pid',
+      targetKey: 'openid',
+    });
+  };
 
   return User;
 };

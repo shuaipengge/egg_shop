@@ -11,6 +11,9 @@ class AdminService extends Service {
     const result = await model.Admins.findAndCountAll({
       limit: parseInt(pageSize),
       offset: parseInt(pageSize) * (parseInt(pageNum) - 1),
+      attributes: {
+        exclude: [ 'password' ],
+      },
       include: [
         {
           model: model.AdminRole,
@@ -31,6 +34,9 @@ class AdminService extends Service {
     const result = await model.Admins.findOne({
       where: {
         id,
+      },
+      attributes: {
+        exclude: [ 'password' ],
       },
       include: [
         {
@@ -59,6 +65,7 @@ class AdminService extends Service {
   }
 
   async updateAdmin(id, body) {
+    // TODO 修改密码
     const {
       ctx: { model },
     } = this;
