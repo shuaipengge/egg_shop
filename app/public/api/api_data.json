@@ -1027,6 +1027,13 @@
           {
             "group": "Parameter",
             "type": "String",
+            "optional": true,
+            "field": "name",
+            "description": "<p>商品名称</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
             "allowedValues": [
               "\"ASC\"",
               "\"DESC\""

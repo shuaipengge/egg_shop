@@ -1,17 +1,19 @@
 'use strict';
 
+const { Op } = require('sequelize');
 const Service = require('egg').Service;
 
 class GoodsService extends Service {
   async getGoodsList(query) {
     const { ctx } = this;
-    const { pageNum = 1, pageSize = 10, cate_1st, cate_2nd, cate_3rd, sortByPrice } = query;
+    const { pageNum = 1, pageSize = 10, cate_1st, cate_2nd, cate_3rd, name, sortByPrice } = query;
     // TODO 复杂查询
     const whereOpts = {};
     let order = [];
     if (cate_1st) whereOpts.cate_1st = cate_1st;
     if (cate_2nd) whereOpts.cate_2nd = cate_2nd;
     if (cate_3rd) whereOpts.cate_3rd = cate_3rd;
+    if (name) whereOpts.name = { [ Op.substring ]: name };
     if (sortByPrice) order = [[ 'price', sortByPrice ]];
 
     const result = await ctx.model.Goods.findAndCountAll({

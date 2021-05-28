@@ -14,6 +14,7 @@ class GoodsController extends Controller {
    * @apiParam {Number} [cate_1st] 一级分类id
    * @apiParam {Number} [cate_2nd] 二级分类id
    * @apiParam {Number} [cate_3rd] 三级分类id
+   * @apiParam {String} [name] 商品名称
    * @apiParam {String="ASC", "DESC"} [sortByPrice] 按照价格排序 从小到大-ASC，从大到小-DESC
    *
    * @apiUse DefineError
