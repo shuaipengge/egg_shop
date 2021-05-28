@@ -2,7 +2,7 @@
 
 const Service = require('egg').Service;
 
-class GoodsService extends Service {
+class CategoriesService extends Service {
   async getCategories() {
     const {
       ctx: { model },
@@ -50,4 +50,4 @@ class GoodsService extends Service {
   }
 }
 
-module.exports = GoodsService;
+module.exports = CategoriesService;

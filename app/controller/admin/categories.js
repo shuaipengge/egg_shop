@@ -2,7 +2,7 @@
 
 const Controller = require('egg').Controller;
 
-class GoodsController extends Controller {
+class CategoriesService extends Controller {
   /**
    * @api {get} /api/v1/admin/categories 获取全部分类
    * @apiGroup admin-Categories
@@ -167,4 +167,4 @@ class GoodsController extends Controller {
     ctx.body = { code: -1, msg: '删除失败' };
   }
 }
-module.exports = GoodsController;
+module.exports = CategoriesService;

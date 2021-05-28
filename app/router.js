@@ -28,6 +28,9 @@ module.exports = app => {
   router.get('/api/v1/goods', user.goods.getGoodsList);
   router.get('/api/v1/goods/:id', user.goods.getGoodsInfo);
 
+  router.get('/api/v1/categories', user.categories.getCategories);
+  router.get('/api/v1/categories/sub/:id', user.categories.getCategoriesSub);
+
   router.get('/api/v1/order', jwt, user.order.getOrderList);
   router.get('/api/v1/order/:id', jwt, user.order.getOrderInfo);
   router.post('/api/v1/order/check', jwt, user.order.setOrder);
