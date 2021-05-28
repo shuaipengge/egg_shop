@@ -101,4 +101,6 @@ module.exports = app => {
   router.get('/api/v1/admin/user/:id', jwt, admin.user.getUserInfo);
 
   router.get('/api/v1/admin/rlogs', jwt, admin.rlogs.getRlogsList);
+
+  router.post('/api/v1/upload', admin.upload.upload);
 };
