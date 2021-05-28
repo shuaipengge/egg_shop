@@ -75,6 +75,25 @@ module.exports = app => {
   router.get('/api/v1/admin/order/:id', jwt, admin.order.getOrderInfo);
   router.put('/api/v1/admin/order/:id', jwt, admin.order.updateOrder);
 
+  router.get('/api/v1/admin/swipper', jwt, admin.market.getSwipper);
+  router.post('/api/v1/admin/swipper', jwt, admin.market.createSwipper);
+  router.put('/api/v1/admin/swipper/:id', jwt, admin.market.updateMarket);
+  router.del('/api/v1/admin/swipper/:id', jwt, admin.market.deleteMarket);
+
+  router.get('/api/v1/admin/popups', jwt, admin.market.getPopups);
+  router.post('/api/v1/admin/popups', jwt, admin.market.createPopups);
+  router.del('/api/v1/admin/popups/:id', jwt, admin.market.deleteMarket);
+  router.put('/api/v1/admin/popups/:id', jwt, admin.market.updateMarket);
+
+  router.get('/api/v1/admin/shopindex', jwt, admin.market.getIndex);
+  router.post('/api/v1/admin/shopindex', jwt, admin.market.createShopindex);
+  router.put('/api/v1/admin/shopindex/:id', jwt, admin.market.updateMarket);
+  router.del('/api/v1/admin/shopindex/:id', jwt, admin.market.deleteMarket);
+
+  router.post('/api/v1/admin/shopitem', jwt, admin.market.createShopitem);
+  router.put('/api/v1/admin/shopitem/:id', jwt, admin.market.updateMarket);
+  router.del('/api/v1/admin/shopitem/:id', jwt, admin.market.deleteMarket);
+
   router.get('/api/v1/admin/user', jwt, admin.user.getUserList);
   router.get('/api/v1/admin/user/:id', jwt, admin.user.getUserInfo);
 

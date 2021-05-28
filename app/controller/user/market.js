@@ -31,7 +31,6 @@ class MarketController extends Controller {
     ctx.body = { code: 200, msg: '获取成功', data };
   }
 
-  // 获取首页展示
   /**
    * @api {get} /api/v1/popups 首页弹窗
    * @apiGroup Market
@@ -61,17 +60,17 @@ class MarketController extends Controller {
   }
 
   /**
-   * @api {get} /api/v1/index 首页展示条目
+   * @api {get} /api/v1/index 首页展示分类
    * @apiGroup Market
    * @apiName getIndex
-   * @apiDescription 首页展示条目
+   * @apiDescription 首页展示分类
    *
    * @apiSampleRequest /api/v1/index
    *
    * @apiUse DefineError
-   * @apiSuccess {Number} id 条目id
-   * @apiSuccess {String} text 条目名称
-   * @apiSuccess {List} child 条目元素
+   * @apiSuccess {Number} id 分类id
+   * @apiSuccess {String} text 分类名称
+   * @apiSuccess {List} child 分类元素
    * @apiSuccessExample  {json} success-example
    * {
    *    "code" : 200,
