@@ -21,6 +21,10 @@ module.exports = app => {
   router.post('/api/v1/cart', jwt, user.cart.cartAddGoods);
   router.del('/api/v1/cart', jwt, user.cart.cartDelGoods);
 
+  router.get('/api/v1/swipper', user.market.getSwipper);
+  router.get('/api/v1/popups', user.market.getPopups);
+  router.get('/api/v1/index', user.market.getIndex);
+
   router.get('/api/v1/goods', user.goods.getGoodsList);
   router.get('/api/v1/goods/:id', user.goods.getGoodsInfo);
 

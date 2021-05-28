@@ -3,7 +3,7 @@
 module.exports = app => {
   const { INTEGER, STRING } = app.Sequelize;
 
-  const Role = app.model.define('rlogs', {
+  const Rlogs = app.model.define('rlogs', {
     id: {
       type: INTEGER,
       primaryKey: true,
@@ -18,7 +18,7 @@ module.exports = app => {
     ip: { type: STRING, comment: '来源IP' },
   });
 
-  Role.associate = () => {};
+  Rlogs.associate = () => {};
 
-  return Role;
+  return Rlogs;
 };
